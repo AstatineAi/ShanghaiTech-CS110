@@ -34,10 +34,12 @@ ex4:
 	python3 ex4.py
 
 # Exercise 5: Sizes
-size64.o:
+EX5SRC = ex5.c
+
+size64.o: $(EX5SRC)
 	$(CC) $(CFLAGS) -o size64.o ex5.c
 
-size32.o:
+size32.o: $(EX5SRC)
 	$(CC) $(CFLAGS32) -o size32.o ex5.c
 
 ex5: size64.o size32.o
