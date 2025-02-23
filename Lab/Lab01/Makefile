@@ -45,7 +45,7 @@ size32.o: $(EX5SRC)
 ex5: size64.o size32.o
 	@echo -e "\nResult of 64-bit arch:"
 	@./size64.o
-	@echo -e "\nResult of 64-bit arch:"
+	@echo -e "\nResult of 32-bit arch:"
 	@./size32.o
 
 clean:
