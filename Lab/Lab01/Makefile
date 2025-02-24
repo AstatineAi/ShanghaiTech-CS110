@@ -10,6 +10,7 @@ all:
 ex1:
 	@fastfetch
 	@uname -a
+	@gcc -v --version
 
 # Exercise 2: show gradescope account and HW1
 ex2:
