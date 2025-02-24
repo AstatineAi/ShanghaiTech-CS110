@@ -1,7 +1,7 @@
 def solve1():
     digits = [0b0110, 0b1001, 0b1111, 0b1001, 0b1001]
-    for i in range(5):
-        print(f"The {i + 1}-th dencimal digit is {digits[i]}")
+    for digit in digits:
+        print(f"Dencimal digit of {bin(digit)} is {digit}")
         
 def solve2():
     def print_char(max_bit):
