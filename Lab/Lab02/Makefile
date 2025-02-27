@@ -36,3 +36,5 @@ memcheck: $(PRODUCT)
 
 clean:
 	rm -rf $(OBJ) $(PRODUCT)
+
+include Makefile.check

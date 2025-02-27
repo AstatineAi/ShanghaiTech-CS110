@@ -1,0 +1,11 @@
+ex1:
+	git log --graph
+
+ex2:
+	@echo "This problem is about showing what\
+	`malloc()`, `calloc()`, `realloc()`, and `free()` do."
+
+ex3: $(PRODUCT)
+	cgdb ./lab2 -- -x ex3.gdb
+
+.PHONY: ex1 ex2 ex3
