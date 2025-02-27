@@ -18,6 +18,7 @@
               cgdb
               valgrind
             ];
+            hardeningDisable = [ "fortify" ];
           };
         };
     };
