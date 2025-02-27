@@ -17,6 +17,9 @@ Queue *queue_create(void) {
 }
 
 queue_result push(Queue *queue, double element) {
+  if (queue == NULL) {
+    return NULL_QUEUE;
+  }
 
   if (queue->size == queue->capacity) {
     int capacity = queue->capacity * 2;
@@ -41,7 +44,9 @@ queue_result push(Queue *queue, double element) {
 double back(Queue *queue) { return queue->data[queue->size - 1]; }
 
 void queue_free(Queue *queue) {
-
+  if (queue == NULL) {
+    return;
+  }
   free(queue->data);
   free(queue);
 }

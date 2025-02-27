@@ -9,12 +9,11 @@ typedef struct {
   int capacity;
 } Queue;
 
-enum queue_result {
+typedef enum {
   SUCCESS,
   ALLOC_FAIL,
-};
-
-typedef enum queue_result queue_result;
+  NULL_QUEUE
+} queue_result;
 
 Queue *queue_create(void);
 queue_result push(Queue *queue, double element);
