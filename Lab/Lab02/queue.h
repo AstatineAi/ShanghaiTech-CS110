@@ -13,10 +13,14 @@ typedef enum {
   SUCCESS,
   ALLOC_FAIL,
   NULL_QUEUE
-} queue_result;
+} QueueResult;
+
+typedef struct {
+  double value;
+} Element;
 
 Queue *queue_create(void);
-queue_result push(Queue *queue, double element);
+QueueResult push(Queue *queue, double element);
 double back(Queue *queue);
 void queue_free(Queue *queue);
 

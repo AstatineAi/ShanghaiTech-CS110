@@ -16,7 +16,7 @@ Queue *queue_create(void) {
   return queue;
 }
 
-queue_result push(Queue *queue, double element) {
+QueueResult push(Queue *queue, double element) {
   if (queue == NULL) {
     return NULL_QUEUE;
   }

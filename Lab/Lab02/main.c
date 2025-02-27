@@ -10,7 +10,7 @@ int main(void) {
   }
 
   for (int i = 0; i < 100; ++i) {
-    queue_result result = push(queue, i * 10);
+    QueueResult result = push(queue, i * 10);
     switch (result) {
     case SUCCESS:
       break;
