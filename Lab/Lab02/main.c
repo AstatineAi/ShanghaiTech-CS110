@@ -21,7 +21,17 @@ int main(void) {
       printf("Queue is NULL\n");
       return 1;
     }
-    printf("%f\n", back(queue));
+
+    Element element = back(queue);
+
+    switch (element.result) {
+    case NOTHING:
+      printf("Queue is empty\n");
+      return 1;
+    case JUST:
+      printf("%f\n", element.value);
+      break;
+    }
   }
   queue_free(queue);
   return 0;

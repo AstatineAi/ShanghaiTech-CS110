@@ -41,7 +41,12 @@ QueueResult push(Queue *queue, double element) {
   return SUCCESS;
 }
 
-double back(Queue *queue) { return queue->data[queue->size - 1]; }
+Element back(Queue *queue) {
+  if (queue == NULL || queue->size == 0) {
+    return (Element){.result = NOTHING};
+  }
+  return (Element){.result = JUST, .value = queue->data[queue->size - 1]};
+}
 
 void queue_free(Queue *queue) {
   if (queue == NULL) {
