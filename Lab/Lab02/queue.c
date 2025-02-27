@@ -3,9 +3,16 @@
 
 Queue *queue_create(void) {
   Queue *queue = malloc(sizeof(Queue));
+  if (queue == NULL) {
+    return NULL;
+  }
   queue->size = 0;
   queue->capacity = QUEUE_INITIAL_CAPACITY;
   queue->data = malloc(sizeof(double) * queue->capacity);
+  if (queue->data == NULL) {
+    free(queue);
+    return NULL;
+  }
   return queue;
 }
 
