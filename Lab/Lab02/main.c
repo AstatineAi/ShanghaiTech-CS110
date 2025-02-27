@@ -33,6 +33,6 @@ int main(void) {
       break;
     }
   }
-  queue_free(queue);
+  another_queue_free(&queue);
   return 0;
 }

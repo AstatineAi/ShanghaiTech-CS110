@@ -55,3 +55,21 @@ void queue_free(Queue *queue) {
   free(queue->data);
   free(queue);
 }
+
+/*
+When queue_free is called, the memory allocated for the queue is freed, making
+the queue pointer a dangling pointer. If we pass the queue pointer to another
+queue function, it will cause undefined behavior. To avoid this, we can set the
+queue pointer to NULL after freeing the memory. This way, if the queue pointer
+is used after freeing the memory, it will be easier to detect and handle the
+error.
+*/
+
+void another_queue_free(Queue **queue) {
+  if (queue == NULL || *queue == NULL) {
+    return;
+  }
+  free((*queue)->data);
+  free(*queue);
+  *queue = NULL;
+}

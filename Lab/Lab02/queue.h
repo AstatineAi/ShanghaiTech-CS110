@@ -29,5 +29,6 @@ Queue *queue_create(void);
 QueueResult push(Queue *queue, double element);
 Element back(Queue *queue);
 void queue_free(Queue *queue);
+void another_queue_free(Queue **queue);
 
 #endif // LAB_2_QUEUE_H
