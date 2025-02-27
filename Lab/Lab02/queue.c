@@ -27,10 +27,8 @@ QueueResult push(Queue *queue, double element) {
     double *new_data = realloc(queue->data, sizeof(double) * capacity);
     if (new_data == NULL) {
       return ALLOC_FAIL;
-    } else {
-      queue->data = new_data;
     }
-
+    queue->data = new_data;
     queue->capacity = capacity;
   }
 
