@@ -1,9 +1,8 @@
 #include "queue.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-Queue *queue_create(void)
-{
+Queue *queue_create(void) {
   Queue *queue = malloc(sizeof(Queue));
   queue->size = 0;
   queue->capacity = QUEUE_INITIAL_CAPACITY;
@@ -11,11 +10,9 @@ Queue *queue_create(void)
   return queue;
 }
 
-void push(Queue *queue, double element)
-{
+void push(Queue *queue, double element) {
 
-  if (queue->size == queue->capacity)
-  {
+  if (queue->size == queue->capacity) {
     int capacity = queue->capacity * 2;
 
     queue->data = realloc(queue->data, sizeof(double) * capacity);
@@ -27,15 +24,10 @@ void push(Queue *queue, double element)
   queue->size++;
 }
 
-double back(Queue *queue)
-{
-  return queue->data[queue->size - 1];
-}
+double back(Queue *queue) { return queue->data[queue->size - 1]; }
 
-void queue_free(Queue *queue)
-{
+void queue_free(Queue *queue) {
 
   free(queue->data);
   free(queue);
 }
-
