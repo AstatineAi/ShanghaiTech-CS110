@@ -16,6 +16,7 @@ int main(void) {
       break;
     case ALLOC_FAIL:
       printf("Memory allocation failed\n");
+      another_queue_free(&queue);
       return 1;
     case NULL_QUEUE:
       printf("Queue is NULL\n");
