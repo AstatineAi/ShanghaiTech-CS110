@@ -30,6 +30,13 @@ Set `t3` to 13 (`0x0000000d`) after `lw` instruction.
 
 ## Exercise 2
 
+### 2.1
+
+- The register representing the variable k: `t0`
+- The registers acting as pointers to the source and dest arrays: `t1` and `t2`
+- The assembly code for the loop found in the C code: from label `loop` to label `exit`
+- How the pointers are manipulated in the assembly code: `t4 = t1 + t3 = t1 + 4 * t0`, `t6 = t2 + t3 = t2 + 4 * t0`
+
 
 
 ## Exercise 3
