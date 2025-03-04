@@ -37,8 +37,25 @@ Set `t3` to 13 (`0x0000000d`) after `lw` instruction.
 - The assembly code for the loop found in the C code: from label `loop` to label `exit`
 - How the pointers are manipulated in the assembly code: `t4 = t1 + t3 = t1 + 4 * t0`, `t6 = t2 + t3 = t2 + 4 * t0`
 
+Line 31
 
+```
+slli t5, t5, 1
+```
+
+shift left immediate `t5 = t5 << 1`, that is, `t5 = t5 * 2`
+
+Line 35
+
+```
+addi t0, t0, 2   # 
+```
+
+add immediate `t0 = t0 + 2`
+
+### 2.2
+
+Modify line 13, 15
 
 ## Exercise 3
-
 
