@@ -50,11 +50,7 @@ main:
     ecall
 
 # Just a simple function. Returns 2025.
-#
-# FIXME Fix the reported error in this function (you can delete lines
-# when necessary, as long as the function still returns 2025 in a0).
 simple_fn:
-    addi a0, t0, 2025
     li a0, 2025
     ret
 
@@ -69,11 +65,10 @@ simple_fn:
 #     return s0;
 # }
 #
-# FIXME There's a calling convention error with this function!
-# The big all-caps comments should give you a hint about what's
-# missing. Another hint: what does the "s" in "s0" stand for?
 naive_mod:
     # BEGIN PROLOGUE
+    addi sp, sp, -4
+    sw s0, 0(sp)
     # END PROLOGUE
     mv s0, a0
 naive_mod_loop:
@@ -83,6 +78,8 @@ naive_mod_loop:
 naive_mod_end:
     mv a0, s0
     # BEGIN EPILOGUE
+    lw s0, 0(sp)
+    addi sp, sp, 4
     # END EPILOGUE
     ret
 
@@ -95,10 +92,9 @@ naive_mod_end:
 # by itself.
 mul_arr:
     # BEGIN PROLOGUE
-    #
-    # FIXME What other registers need to be saved?
-    #
-    addi sp, sp, -4
+    addi sp, sp, -12
+    sw s1, 8(sp)
+    sw s0, 4(sp)
     sw ra, 0(sp)
     # END PROLOGUE
     mv s0, a0 # Copy start of array to saved register
@@ -109,19 +105,20 @@ inc_arr_loop:
     slli t1, t0, 2 # Convert array index to byte offset
     add a0, s0, t1 # Add offset to start of array
     # Prepare to call helper_fn
-    #
-    # FIXME Add code to preserve the value in t0 before we call helper_fn
-    # Hint: What does the "t" in "t0" stand for?
-    # Also ask yourself this: why don't we need to preserve t1?
-    #
+    addi sp, sp, -4
+    sw t0, 0(sp)
     jal helper_fn
+    lw t0, 0(sp)
+    addi sp, sp, 4
     # Finished call for helper_fn
     addi t0, t0, 1 # Increment counter
     j inc_arr_loop
 inc_arr_end:
     # BEGIN EPILOGUE
     lw ra, 0(sp)
-    addi sp, sp, 4
+    lw s0, 4(sp)
+    lw s1, 8(sp)
+    addi sp, sp, 12
     # END EPILOGUE
     ret
 
@@ -129,17 +126,17 @@ inc_arr_end:
 # It doesn't return anything.
 # C pseudocode for what it does: "*a0 = *a0 * *a0"
 #
-# FIXME This function also violates calling convention, but it might not
-# be reported by the Venus calling convention checker (try and figure out why).
-# You should fix the bug anyway by filling in the prologue and epilogue
-# as appropriate.
 helper_fn:
     # BEGIN PROLOGUE
+    addi sp, sp, -4
+    sw s0, 0(sp)
     # END PROLOGUE
     lw t1, 0(a0)
     mul s0, t1, t1
     sw s0, 0(a0)
     # BEGIN EPILOGUE
+    lw s0, 0(sp)
+    addi sp, sp, 4
     # END EPILOGUE
     ret
 
