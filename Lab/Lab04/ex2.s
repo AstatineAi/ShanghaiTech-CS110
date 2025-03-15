@@ -46,7 +46,20 @@ main:
     ecall
 
 
-# FIXME - # YOUR CODE HERE #
-# Hint - Venus supports RV64M. You can use ``rem''.
+# int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
 greatest_common_divider:
+    # PROLOGUE BEGIN
+    addi sp, sp, -12
+    sw ra, 8(sp)
+    # PROLOGUE END
+    beqz a1, end
+    rem t0, a0, a1
+    mv a0, a1
+    mv a1, t0
+    jal ra, greatest_common_divider
+end:
+    # EPILOGUE BEGIN
+    lw ra, 8(sp)
+    addi sp, sp, 12
+    # EPILOGUE END
 	ret
