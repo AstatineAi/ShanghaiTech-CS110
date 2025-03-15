@@ -19,3 +19,11 @@
 - No, they are simple jumps for loop control using `j` and B-type instructions.
   
 `mul_arr` calls `helper_fn`, so it needs to store `ra` in the prologue and restore it in the epilogue. Other functions do not call any other functions, so they do not need to store `ra`.
+
+## Exercise 2
+
+```c
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
+```
+
+Since the function above is tail recursive, we can convert it to an iterative version and just forget the calling convention.
