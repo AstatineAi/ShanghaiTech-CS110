@@ -15,10 +15,14 @@
 - In RISC-V, we invoke functions by jumping to them and storing the return address in the ra register. Does calling convention apply to the jumps to the `naive_mod_loop` or `naive_mod_end` labels?
 
 `naive_mod_loop` and `naive_mod_end` do not jump to a function, so calling convention does not apply to them.
-
-- No, they are simple jumps for loop control using `j` and B-type instructions.
   
+- Why do we need to store ra in the prologue for mul_arr, but not in any other function?
+
 `mul_arr` calls `helper_fn`, so it needs to store `ra` in the prologue and restore it in the epilogue. Other functions do not call any other functions, so they do not need to store `ra`.
+
+- Why wasn't the calling convention error in `helper_fn` reported by the CC checker? (Hint: it's mentioned above in the exercise instructions.)
+
+`helper_fn` is not in `.globl`
 
 ## Exercise 2
 
