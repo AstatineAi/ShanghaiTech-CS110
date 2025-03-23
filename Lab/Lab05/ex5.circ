@@ -115,7 +115,7 @@ end type_architecture;
   <circuit name="Running_LED">
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="Running_LED"/>
-    <a name="simulationFrequency" val="1.0"/>
+    <a name="simulationFrequency" val="2.0"/>
     <comp lib="0" loc="(100,550)" name="Clock"/>
     <comp lib="0" loc="(1050,280)" name="Splitter">
       <a name="appear" val="center"/>
@@ -134,6 +134,11 @@ end type_architecture;
     </comp>
     <comp lib="0" loc="(1130,440)" name="Tunnel">
       <a name="label" val="OUT_LED3"/>
+    </comp>
+    <comp lib="0" loc="(120,320)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="OUT_LED"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(120,360)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -230,6 +235,12 @@ end type_architecture;
       <a name="facing" val="east"/>
       <a name="label" val="OUT_LED4"/>
     </comp>
+    <comp lib="2" loc="(260,350)" name="Multiplexer">
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="4" loc="(390,340)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
     <comp lib="5" loc="(150,780)" name="LED">
       <a name="facing" val="north"/>
     </comp>
@@ -257,7 +268,8 @@ end type_architecture;
     <comp lib="8" loc="(675,210)" name="Text">
       <a name="text" val="PUT CIRCUITS HERE"/>
     </comp>
-    <wire from="(100,550)" to="(210,550)"/>
+    <comp loc="(590,370)" name="rot1"/>
+    <wire from="(100,550)" to="(390,550)"/>
     <wire from="(1010,300)" to="(1010,320)"/>
     <wire from="(1020,300)" to="(1020,360)"/>
     <wire from="(1030,300)" to="(1030,400)"/>
@@ -271,17 +283,26 @@ end type_architecture;
     <wire from="(1070,360)" to="(1130,360)"/>
     <wire from="(1080,300)" to="(1080,320)"/>
     <wire from="(1080,320)" to="(1130,320)"/>
-    <wire from="(120,360)" to="(200,360)"/>
-    <wire from="(120,460)" to="(210,460)"/>
+    <wire from="(120,320)" to="(170,320)"/>
+    <wire from="(120,360)" to="(230,360)"/>
+    <wire from="(120,460)" to="(240,460)"/>
     <wire from="(150,720)" to="(150,780)"/>
+    <wire from="(170,320)" to="(170,340)"/>
+    <wire from="(170,340)" to="(230,340)"/>
     <wire from="(220,140)" to="(410,140)"/>
     <wire from="(220,180)" to="(410,180)"/>
+    <wire from="(240,370)" to="(240,460)"/>
+    <wire from="(260,350)" to="(270,350)"/>
     <wire from="(260,720)" to="(260,780)"/>
+    <wire from="(270,350)" to="(270,370)"/>
+    <wire from="(270,370)" to="(390,370)"/>
     <wire from="(370,720)" to="(370,780)"/>
+    <wire from="(390,410)" to="(390,550)"/>
+    <wire from="(450,370)" to="(480,370)"/>
     <wire from="(480,720)" to="(480,780)"/>
-    <wire from="(530,360)" to="(630,360)"/>
+    <wire from="(590,370)" to="(630,370)"/>
     <wire from="(590,720)" to="(590,780)"/>
-    <wire from="(630,360)" to="(630,450)"/>
+    <wire from="(630,370)" to="(630,450)"/>
     <wire from="(700,720)" to="(700,780)"/>
     <wire from="(810,720)" to="(810,780)"/>
     <wire from="(920,720)" to="(920,780)"/>
@@ -291,5 +312,61 @@ end type_architecture;
     <wire from="(960,360)" to="(1020,360)"/>
     <wire from="(960,400)" to="(1030,400)"/>
     <wire from="(960,440)" to="(1040,440)"/>
+  </circuit>
+  <circuit name="rot1">
+    <a name="appearance" val="custom"/>
+    <a name="circuit" val="rot1"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <appear>
+      <rect height="4" stroke="none" width="10" x="50" y="58"/>
+      <text dominant-baseline="alphabetic" fill="#404040" font-family="Dialog" font-size="12" text-anchor="start" x="65" y="64"/>
+      <rect height="4" stroke="none" width="10" x="149" y="58"/>
+      <text dominant-baseline="alphabetic" fill="#404040" font-family="Dialog" font-size="12" text-anchor="end" x="255" y="64"/>
+      <rect height="20" stroke="none" width="91" x="60" y="70"/>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="90" x="60" y="50"/>
+      <text dominant-baseline="alphabetic" fill="#ffffff" font-family="Dialog" font-size="14" font-weight="bold" text-anchor="middle" x="106" y="85">rot1</text>
+      <circ-anchor facing="east" x="160" y="60"/>
+      <circ-port dir="in" pin="230,230" x="50" y="60"/>
+      <circ-port dir="out" pin="440,230" x="160" y="60"/>
+    </appear>
+    <comp lib="0" loc="(230,230)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(270,230)" name="Splitter">
+      <a name="appear" val="center"/>
+      <a name="bit0" val="1"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp lib="0" loc="(330,230)" name="Splitter">
+      <a name="appear" val="center"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="1"/>
+      <a name="facing" val="west"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp lib="0" loc="(440,230)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="8"/>
+    </comp>
+    <wire from="(230,230)" to="(270,230)"/>
+    <wire from="(290,220)" to="(310,220)"/>
+    <wire from="(290,230)" to="(310,230)"/>
+    <wire from="(330,230)" to="(440,230)"/>
   </circuit>
 </project>
