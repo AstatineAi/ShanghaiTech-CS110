@@ -79,6 +79,20 @@
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(120,630)" name="Constant">
+      <a name="value" val="0xfffffffc"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(130,590)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="new_addr"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(180,530)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="current_addr"/>
+      <a name="width" val="32"/>
+    </comp>
     <comp lib="0" loc="(220,210)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="label" val="clk"/>
@@ -96,6 +110,10 @@
       <a name="label" val="new_addr"/>
       <a name="width" val="32"/>
     </comp>
+    <comp lib="0" loc="(240,510)" name="Constant">
+      <a name="value" val="0x4"/>
+      <a name="width" val="32"/>
+    </comp>
     <comp lib="0" loc="(290,210)" name="Tunnel">
       <a name="label" val="clk"/>
     </comp>
@@ -107,6 +125,22 @@
     </comp>
     <comp lib="0" loc="(300,370)" name="Tunnel">
       <a name="label" val="new_addr"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(500,690)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="pc_update"/>
+    </comp>
+    <comp lib="0" loc="(560,730)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="clk"/>
+    </comp>
+    <comp lib="0" loc="(610,730)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="rst"/>
+    </comp>
+    <comp lib="0" loc="(700,600)" name="Tunnel">
+      <a name="label" val="current_addr"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(730,230)" name="Tunnel">
@@ -121,10 +155,37 @@
       <a name="output" val="true"/>
       <a name="width" val="32"/>
     </comp>
+    <comp lib="1" loc="(230,610)" name="AND Gate">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="2" loc="(520,600)" name="Multiplexer">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="3" loc="(340,520)" name="Adder">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="4" loc="(580,570)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="width" val="32"/>
+    </comp>
+    <wire from="(120,630)" to="(180,630)"/>
+    <wire from="(130,590)" to="(180,590)"/>
+    <wire from="(180,530)" to="(300,530)"/>
     <wire from="(220,210)" to="(290,210)"/>
     <wire from="(220,250)" to="(290,250)"/>
     <wire from="(220,300)" to="(290,300)"/>
     <wire from="(230,370)" to="(300,370)"/>
+    <wire from="(230,610)" to="(490,610)"/>
+    <wire from="(240,510)" to="(300,510)"/>
+    <wire from="(340,520)" to="(440,520)"/>
+    <wire from="(440,520)" to="(440,590)"/>
+    <wire from="(440,590)" to="(490,590)"/>
+    <wire from="(500,620)" to="(500,690)"/>
+    <wire from="(520,600)" to="(580,600)"/>
+    <wire from="(560,640)" to="(560,730)"/>
+    <wire from="(560,640)" to="(580,640)"/>
+    <wire from="(610,660)" to="(610,730)"/>
+    <wire from="(640,600)" to="(700,600)"/>
     <wire from="(730,230)" to="(800,230)"/>
   </circuit>
 </project>
