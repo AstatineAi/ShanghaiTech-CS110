@@ -8,11 +8,10 @@
 
 %-------------------------------%
 % Other details
-% TODO: Fill these
 %-------------------------------%
 \title{Assignment 4: Digital circuit}
-\setmembername{}  % Fill student name
-\setmemberuid{}  % Fill  student id
+\setmembername{Hengyu Ai}  % Fill student name
+\setmemberuid{2023533088}  % Fill  student id
 
 %-------------------------------%
 % Add / Delete commands and packages
@@ -61,30 +60,74 @@ The circuit shown in Figure.~\ref{fig:Q1_circuit} is a 1-bit comparator. Answer 
 (d) What comparison do the outputs $Y0$, $Y1$ and $Y2$ represent respectively? e.g: $Y0=1$ represents $A=B$, $A<B$ or $A>B$ (one of the three cases). \textbf{[6 pt]}
 
 (e) Draw the circuit of an unsigned 2-bit comparator using this 1-bit comparator and the following logic gates: 2-input AND, 2-input OR, and 1-input NOT. The 2-bit comparator has two 2-bit inputs $A1A0$ and $B1B0$, three outputs $Y0$, $Y1$ and $Y2$ with the same function as the 1-bit comparator. You can use the 1-bit comparator as a basic logic block as shown in Figure.~\ref{fig:Q1_comparator_1}. \textbf{[10 pt]}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{Q1_comparator_1.png}
     \caption{A 1-bit comparator diagram}
     \label{fig:Q1_comparator_1}
 \end{figure}
+
+\newpage
+
 \begin{answer}[Question 1]
-    Your answer here.\\
-    (b) Do not modify the given values in the truth table.\\
+    (a)
+    \begin{itemize}
+        \item \( Y0 = A \overline{AB} \)
+        \item \( Y1 = \overline{A \overline{AB} + B \overline{AB}} \)
+        \item \( Y2 = B \overline{AB} \)
+    \end{itemize}
+
+    (b)
     \begin{center}
         \begin{tabular}{ |c|c||c|c|c| } 
          \hline
          A & B & Y2 & Y1 & Y0 \\ 
          \hline
-         0 & 0 &  &  &   \\ 
+         0 & 0 & 0 & 1 & 0 \\ 
          \hline
-         0 & 1 &  &  &   \\ 
+         0 & 1 & 1 & 0 & 0 \\ 
          \hline
-         1 & 0 &  &  &   \\
+         1 & 0 & 0 & 0 & 1 \\
          \hline
-         1 & 1 &  &  &   \\
+         1 & 1 & 0 & 1 & 0 \\
          \hline
         \end{tabular}
     \end{center}
+
+    (c)\\
+
+    Minterms:
+    \begin{center}
+    \begin{tabular}{c|c}
+    \( \overline{AB} \) & \( m_0 \) \\
+    \( A \overline{B} \) & \( m_1 \) \\
+    \( \overline{A} B \) & \( m_2 \) \\
+    \( AB \) & \( m_3 \) \\
+    \end{tabular}
+    \end{center}
+
+    \begin{itemize}
+        \item \( Y0 = m_2 \)
+        \item \( Y1 = m_0 + m_3 \)
+        \item \( Y2 = m_1 \)
+    \end{itemize}
+
+    (d)
+
+    \begin{itemize}
+        \item \( Y0 = 1 \) represents  \( A > B \)
+        \item \( Y1 = 1 \) represents \( A = B \)
+        \item \( Y2 = 1 \) represents \( A < B \)
+    \end{itemize}
+
+    \newpage
+
+    (e)\\
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{Q1_d.png}
+    \end{center}
+
 \end{answer}
 
 \newpage
