@@ -146,7 +146,27 @@ What is the minimum acceptable clock cycle time for this circuit? What
  clock frequency does it correspond to? (please include enough explanation) \textbf{[16 pt]}
  
 \begin{answer}[Question 2]
-        Your answer here. \\
+    The minimum clock cycle time is determined by the longest path delay in the circuit.
+    The longest path from a register to a register is as follows:
+
+    \begin{itemize}
+        \item upper input
+        \item and gate (4 ns)
+        \item and gate (4 ns)
+        \item register in the middle
+    \end{itemize}
+
+    Therefore:
+
+    \[
+    t_{clk} \ge t_{setup} + t_{clk-to-q} + t_{comp} = 2 + 2 + 8 = 12 \text{ ns}
+    \]
+
+    The minimum clock cycle time is 12 ns.\\
+    The maximum clock frequency is the reciprocal of the clock cycle time:
+    \[
+    f_{max} = \frac{1}{t_{clk}} = \frac{1}{12 \text{ ns}} = 83.33 \text{ MHz}
+    \]
 \end{answer}
 
 \newpage
