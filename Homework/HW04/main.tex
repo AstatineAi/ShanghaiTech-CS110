@@ -19,6 +19,22 @@
 %-------------------------------%
 \usepackage{amsmath,amssymb,bm}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\input{glyphtounicode}
+\usetikzlibrary{automata} % Import library for drawing automata
+\usetikzlibrary{positioning} % ...positioning nodes
+\usetikzlibrary{arrows.meta}
+\pdfglyphtounicode{visiblespace}{A0}
+\pdfglyphtounicode{blank}{A0}
+\pdfglyphtounicode{visualspace}{A0}
+\pdfglyphtounicode{uni2423}{A0}
+\pdfgentounicode=1
 
 \newcommand{\KL}{\mathrm{KL}}
 \newcommand{\R}{\mathbb{R}}
@@ -182,35 +198,98 @@ e.g: input='011001', state=\{start\}$\xrightarrow{}$\{10\}$\xrightarrow{}$\{01\}
 
 (d) Draw the circuit diagram for NS and output. \textbf{[15 pt]}
 \begin{answer}[Question 3]
-        Your answer here. \\
-        (c) Do not modify the given values in the truth table.\\
-        \begin{center}
-            \begin{tabular}{ |c|c|c|c||c|c|c|c| } 
-             \hline
-             CS[2] & CS[1] & CS[0] & input & NS[2] & NS[1] & NS[0] & output \\ 
-             \hline
-             0 & 0 & 0 & 0 &  &  &  &  \\ 
-             \hline
-             0 & 0 & 0 & 1 &  &  &  &  \\ 
-             \hline
-             1 & 1 & 0 & 0 &  &  &  &  \\ 
-             \hline
-             1 & 1 & 0 & 1 &  &  &  &  \\ 
-             \hline
-             1 & 0 & 1 & 0 &  &  &  &  \\ 
-             \hline
-             1 & 0 & 1 & 1 &  &  &  &  \\ 
-             \hline
-             1 & 0 & 0 & 0 &  &  &  &  \\ 
-             \hline
-             1 & 0 & 0 & 1 &  &  &  &  \\ 
-             \hline
-             1 & 1 & 1 & 0 &  &  &  &  \\ 
-             \hline
-             1 & 1 & 1 & 1 &  &  &  &  \\ 
-             \hline
-            \end{tabular}
-        \end{center}
+    (a)
+    \begin{center}
+    \begin{tikzpicture}[->, >={Stealth[scale=2.5]}]
+        \node[state, minimum size=15mm] (s1) at (0,4) {start/0};  
+        \node[state, minimum size=15mm] (s2) at (3.8,1.2) {10/0};  
+        \node[state, minimum size=15mm] (s3) at (2.3,-3.2) {01/0};
+        \node[state, minimum size=15mm] (s4) at (-2.3,-3.2) {00/1};
+        \node[state, minimum size=15mm] (s5) at (-3.8,1.2) {11/1};
+        
+        \draw (s1) edge [below] node {0} (s2);
+        \draw (s1) edge [below] node {1} (s3);
+        \draw (s2) edge [right] node {0} (s4);
+        \draw (s2) edge [above] node {1} (s3);
+        \draw (s3) edge [bend right] node {0} (s2);
+        \draw (s3) edge [below] node {1} (s5);
+        \draw (s4) edge [loop above] node {0} (s4);
+        \draw (s4) edge [above] node {1} (s3);
+        \draw (s5) edge [loop above] node {1} (s5);
+        \draw (s5) edge [above] node {0} (s2);
+    \end{tikzpicture}
+    \end{center}
+
+    \newpage
+    (b)
+    \begin{center}
+    \begin{tikzpicture}[->, >={Stealth[scale=2.5]}]
+        \node[state, minimum size=15mm] (s1) at (0,4) {start};  
+        \node[state, minimum size=15mm] (s2) at (3.8,1.2) {10};  
+        \node[state, minimum size=15mm] (s3) at (2.3,-3.2) {01};
+        \node[state, minimum size=15mm] (s4) at (-2.3,-3.2) {00};
+        \node[state, minimum size=15mm] (s5) at (-3.8,1.2) {11};
+        
+        \draw (s1) edge [below] node {0 / 0} (s2);
+        \draw (s1) edge [below] node {1 / 0} (s3);
+        \draw (s2) edge [right] node {0 / 1} (s4);
+        \draw (s2) edge [above] node {1 / 0} (s3);
+        \draw (s3) edge [bend right] node {0 / 0} (s2);
+        \draw (s3) edge [below] node {1 / 1} (s5);
+        \draw (s4) edge [loop above] node {0 / 1} (s4);
+        \draw (s4) edge [above] node {1 / 0} (s3);
+        \draw (s5) edge [loop above] node {1 / 1} (s5);
+        \draw (s5) edge [above] node {0 / 0} (s2);
+    \end{tikzpicture}
+    \end{center}
+
+    (c) Do not modify the given values in the truth table.\\
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c||c|c|c|c| } 
+            \hline
+            CS[2] & CS[1] & CS[0] & input & NS[2] & NS[1] & NS[0] & output \\ 
+            \hline
+            0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 \\ 
+            \hline
+            0 & 0 & 0 & 1 & 1 & 0 & 1 & 0 \\ 
+            \hline
+            1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 \\ 
+            \hline
+            1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 \\ 
+            \hline
+            1 & 0 & 1 & 0 & 1 & 1 & 0 & 0 \\ 
+            \hline
+            1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 \\ 
+            \hline
+            1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\ 
+            \hline
+            1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 \\ 
+            \hline
+            1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \\ 
+            \hline
+            1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\ 
+            \hline
+        \end{tabular}
+    \end{center}
+
+    (d)
+
+    Main circuit:
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{main.png}
+    \end{center}
+
+    \newpage
+
+    Transition circuit:
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{transition.png}
+    \end{center}
+
+    Output circuit:
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{calc_out.png}
+    \end{center}
         
 \end{answer}
 
