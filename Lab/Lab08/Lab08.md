@@ -39,3 +39,25 @@ min clock period >= t_comp + t_setup + t_clocktoq = 200 + 10 + 10 = 220ns
 
 t_clock = 1 / f_clock = 1 / 220ns = 4.545MHz
 
+## Exercise 2
+
+## Expected Output
+
+0000 0011, 0001 0100, 1011 0100, 0111 1000, 0000 1100, 0000 0000
+
+### Highest Clock Frequency
+
+t_comp in single shift_and_add component:
+
+current_sum -> partial_product: 45ns
+multiplicand -> partial_product: 65ns
+multiplicand -> shifted_multiplicand: 5ns
+
+The critical path in the circuit is:
+
+multiplicand -> partial_product
+
+min clock period >= t_comp + t_setup + t_clocktoq = 65ns + 10ns + 10ns = 85ns
+
+t_clock = 1 / f_clock = 1 / 85ns = 11.76MHz
+
