@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 Image transpose(Image a){
     /* img_sc() will return a copy of the given image*/
@@ -19,8 +20,13 @@ Image transpose(Image a){
 Image apply_gb(Image a, FVec gv)
 {
     Image b = gb_h(a, gv);
-    Image c = gb_v(b,gv);
+    Image c = transpose(b);
+    // Image c = gb_v(b,gv);
+    Image d = gb_h(c,gv);
+    Image e = transpose(d);
     free(b.data);
-    return c;
+    free(c.data);
+    free(d.data);
+    return e;
 }
 /**********You need to modify the code above this section***********/

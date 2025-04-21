@@ -6,11 +6,11 @@
 
 /**********You need to modify the code below this section***********/
 struct log_entry{
+    int status;
+    long reference_time;
     int src_ip;
     char URL[128];
-    long reference_time;
     char bro[128];
-    int status;
 }logs[NUM_ENTRIES];
 /**********You need to modify the code above this section***********/
 
