@@ -13,7 +13,7 @@
 
 #align(center)[= CS110 sp25 HW5]
 #v(1cm)
-#align(center)[Due: TBD]
+#align(center)[Due: 2025/5/7 23:59]
 
 Complete this homework either by writing neatly by hand or using #TYPST. You can find the `.typ` file on Piazza.
 
