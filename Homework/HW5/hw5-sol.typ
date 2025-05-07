@@ -52,6 +52,25 @@
 #let t2-3 = sol[
   Change the cache associativity to fully associative.
 ]
-#let t3-3 = v(5cm)
-#let t4-1 = v(5cm)
-#let t4-2 = v(5cm)
+
+#let t3-1 = sol[
+  $8% times 35% times 10% = 0.28%$
+]
+
+#let t3-2 = sol[
+  $
+  "AMAT" = 2 "cycle" + 8% times (12 "cycle" + 35% times (44 "cycle" + 10% times (80 "ns")))
+  $
+
+  Since the CPU runs at 4GHz, a cycle takes 0.25ns.
+
+  $
+  "AMAT" = 0.5 "ns" + 0.08 times (3 "ns" + 0.35 times (11 "ns" + 0.10 times (80 "ns"))) = 1.272 "ns"
+  $
+]
+
+#let t3-3 = sol[
+  $
+  "AMAT" = 0.8 "ns" + 0.06 times (3 "ns" + 0.35 times (11 "ns" + 0.10 times (80 "ns"))) = 1.379 "ns"
+  $
+]
