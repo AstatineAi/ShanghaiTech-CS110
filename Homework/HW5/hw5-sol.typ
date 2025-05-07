@@ -24,34 +24,34 @@
 )
 
 #let t2-1 = (
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
+  [32 btyes],
+  [256 bytes],
+  [2-way set associative],
+  [8],
+  [4],
+  [5, 2, 5],
 )
 
 #let t2-2 = (
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
-  [~],
+  [Miss],
+  [Miss],
+  [Miss],
+  [Replacement],
+  [Replacement],
+  [Miss],
+  [Replacement],
+  [Hit],
+  [Replacement],
+  [Replacement],
+  [Hit],
+  [Hit],
+  [Replacement],
+  [Hit],
 )
 
-#let t2-3 = v(5cm)
-#let t3-1 = v(5cm)
-#let t3-2 = v(5cm)
+#let t2-3 = sol[
+  Change the cache associativity to fully associative.
+]
 #let t3-3 = v(5cm)
 #let t4-1 = v(5cm)
 #let t4-2 = v(5cm)
