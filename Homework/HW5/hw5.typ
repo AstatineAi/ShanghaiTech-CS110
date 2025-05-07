@@ -117,6 +117,8 @@ Complete this homework either by writing neatly by hand or using #TYPST. You can
     #t3-3
 ]
 
+#pagebreak()
+
 #smallcaps[== 4 ~ Code analysis]\
 #[
   Consider the following code:
