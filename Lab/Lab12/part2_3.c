@@ -69,9 +69,14 @@ void naive_matmul(void) {
 void loop_unroll_matmul(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
-
-    // c2 = a * b
-    // TODO: implement me!
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < p; ++j) {
+            c2[i][j] = a[i][0] * b[0][j] + 
+                       a[i][1] * b[1][j] + 
+                       a[i][2] * b[2][j] + 
+                       a[i][3] * b[3][j];
+        }
+    }
     clock_gettime(CLOCK_MONOTONIC, &end);
     printf("unroll: %f\n", (float) (end.tv_sec - start.tv_sec) + (float) (end.tv_nsec - start.tv_nsec) / 1000000000.0f);
     check_correctness("loop_unroll_matmul");
@@ -80,8 +85,32 @@ void loop_unroll_matmul(void) {
 void simd_matmul(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
-    // c2 = a * b
-    // TODO: implement me!
+    /*
+    _mm_setzero_ps
+    _mm_set1_ps
+    _mm_loadu_ps
+    _mm_add_ps
+    _mm_mul_ps
+    _mm_storeu_ps
+    */
+    for (int i = 0; i < n; ++i) {
+        int j;
+        for (j = 0; j <= p - 4; j += 4) {
+            __m128 sum = _mm_setzero_ps();
+            for (int k = 0; k < 4; ++k) {
+                __m128 a_val = _mm_set1_ps(a[i][k]);
+                __m128 b_vals = _mm_loadu_ps(&b[k][j]);
+                sum = _mm_add_ps(sum, _mm_mul_ps(a_val, b_vals));
+            }
+            _mm_storeu_ps(&c2[i][j], sum);
+        }
+        for (; j < p; ++j) {
+            c2[i][j] = 0;
+            for (int k = 0; k < 4; ++k) {
+                c2[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
     clock_gettime(CLOCK_MONOTONIC, &end);
     printf("simd: %f\n", (float) (end.tv_sec - start.tv_sec) + (float) (end.tv_nsec - start.tv_nsec) / 1000000000.0f);
     check_correctness("simd_matmul");
@@ -90,8 +119,34 @@ void simd_matmul(void) {
 void loop_unroll_simd_matmul(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
-    // c2 = a * b
-    // TODO: implement me!
+    for (int i = 0; i < n; ++i) {
+        int j;
+        for (j = 0; j <= p - 4; j += 4) {
+            __m128 a0 = _mm_set1_ps(a[i][0]);
+            __m128 a1 = _mm_set1_ps(a[i][1]);
+            __m128 a2 = _mm_set1_ps(a[i][2]);
+            __m128 a3 = _mm_set1_ps(a[i][3]);
+            
+            __m128 b0 = _mm_loadu_ps(&b[0][j]);
+            __m128 b1 = _mm_loadu_ps(&b[1][j]);
+            __m128 b2 = _mm_loadu_ps(&b[2][j]);
+            __m128 b3 = _mm_loadu_ps(&b[3][j]);
+            
+            __m128 sum = _mm_mul_ps(a0, b0);
+            sum = _mm_add_ps(sum, _mm_mul_ps(a1, b1));
+            sum = _mm_add_ps(sum, _mm_mul_ps(a2, b2));
+            sum = _mm_add_ps(sum, _mm_mul_ps(a3, b3));
+            
+            _mm_storeu_ps(&c2[i][j], sum);
+        }
+        
+        for (; j < p; ++j) {
+            c2[i][j] = a[i][0] * b[0][j] + 
+                       a[i][1] * b[1][j] + 
+                       a[i][2] * b[2][j] + 
+                       a[i][3] * b[3][j];
+        }
+    }
     clock_gettime(CLOCK_MONOTONIC, &end);
     printf("unroll+simd: %f\n", (float) (end.tv_sec - start.tv_sec) + (float) (end.tv_nsec - start.tv_nsec) / 1000000000.0f);
     check_correctness("loop_unroll_simd_matmul");

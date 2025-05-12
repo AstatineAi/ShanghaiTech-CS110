@@ -16,7 +16,18 @@ void naive_shift_right(void){
 }
 
 void simd_shift_right(void) {
-    // TODO: implement me!
+    for (int i = 0; i < 1000; ++i) {
+        int j = 0;
+        for (; j + 3 < 40; j += 4) {
+            __m128i a_vec = _mm_load_si128((__m128i*)&a[i][j]);
+            __m128i b_vec = _mm_load_si128((__m128i*)&b[i][j]);
+            __m128i result = _mm_srlv_epi32(a_vec, b_vec);
+            _mm_storeu_si128((__m128i*)&c[i][j], result);
+        }
+        for (; j < 40; ++j) {
+            c[i][j] = a[i][j] >> b[i][j];
+        }
+    }
 }
 
 
