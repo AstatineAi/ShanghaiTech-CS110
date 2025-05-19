@@ -64,10 +64,58 @@ void matmul_serial(double *a, double *b, double *c) {
 }
 
 // Task 1
-void matmul_omp_slices(double *a, double *b, double *c) {}
+void matmul_omp_slices(double *a, double *b, double *c) {
+  // First task, slicing: have each thread handle adjacent rows:
+  // i.e. Thread 0 will compute the rows at indices i such that
+  // i % omp_get_num_threads() is 0, Thread 1 will compute the rows where
+  // i % omp_get_num_threads() is 1, etc.
+
+#pragma omp parallel
+  {
+    int thread_id = omp_get_thread_num();
+    int num_threads = omp_get_num_threads();
+    for (int i = thread_id; i < MATRIX_SIZE; i += num_threads) {
+      for (int j = 0; j < MATRIX_SIZE; j++) {
+        for (int k = 0; k < MATRIX_SIZE; k++) {
+          c[i * MATRIX_SIZE + j] +=
+              a[i * MATRIX_SIZE + k] * b[k * MATRIX_SIZE + j];
+        }
+      }
+    }
+  }
+}
 
 // Task 2
-void matmul_omp_chunks(double *a, double *b, double *c) {}
+void matmul_omp_chunks(double *a, double *b, double *c) {
+  // Second task, chunking: if there are N threads, break the matrices into
+  // N contiguous chunks along the first dimension (the rows), and have each
+  // thread compute the product of the chunk of matrix A and the entire matrix
+  // B.
+
+#pragma omp parallel
+  {
+    int thread_id = omp_get_thread_num();
+    int num_threads = omp_get_num_threads();
+    int chunk_size = MATRIX_SIZE / num_threads;
+    int remained_rows = MATRIX_SIZE % num_threads;
+    int start_row, end_row;
+    if (thread_id < remained_rows) {
+      start_row = thread_id * (chunk_size + 1);
+      end_row = start_row + chunk_size + 1;
+    } else {
+      start_row = remained_rows * (chunk_size + 1) + (thread_id - remained_rows) * chunk_size;
+      end_row = start_row + chunk_size;
+    }
+    for (int i = start_row; i < end_row; i++) {
+      for (int j = 0; j < MATRIX_SIZE; j++) {
+        for (int k = 0; k < MATRIX_SIZE; k++) {
+          c[i * MATRIX_SIZE + j] +=
+              a[i * MATRIX_SIZE + k] * b[k * MATRIX_SIZE + j];
+        }
+      }
+    }
+  }
+}
 
 int main() {
   double *a = (double *)malloc(MATRIX_SIZE * MATRIX_SIZE * sizeof(double));

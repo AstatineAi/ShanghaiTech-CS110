@@ -80,6 +80,10 @@ void merge_sort_omp_tasks_recursive(int *arr, int left, int right) {
   // Part 2:
   // For small array, just call the serial version to avoid creating too many
   // tasks.
+  if (right - left < CUT_OFF) {
+    merge_sort_serial_recursive(arr, left, right);
+    return;
+  }
 
   // Part 3:
   // Start two sort tasks to sort two subarrays by using `#pragma omp task`,
@@ -87,6 +91,17 @@ void merge_sort_omp_tasks_recursive(int *arr, int left, int right) {
   // `#pragma omp taskwait` before `merge`.
   // What if we do not wait for child tasks? Try it out.
   // You can also try `#pragma omp barrier` and think why it does not work.
+
+#pragma omp task
+  {
+    merge_sort_omp_tasks_recursive(arr, left, (left + right) / 2);
+  }
+#pragma omp task
+  {
+    merge_sort_omp_tasks_recursive(arr, (left + right) / 2 + 1, right);
+  }
+#pragma omp taskwait
+  merge(arr, left, (left + right) / 2, right);
 }
 
 // Your task
@@ -98,6 +113,14 @@ void merge_sort_omp_tasks(int *arr) {
   // default, will be blocked until the overall sort finished. To get it
   // involved with recursive sort, you can add `nowait` clause after the
   // directive.
+
+#pragma omp parallel
+  {
+#pragma omp single
+    {
+      merge_sort_omp_tasks_recursive(arr, 0, ARRAY_SIZE - 1);
+    }
+  }
 }
 
 int main() {

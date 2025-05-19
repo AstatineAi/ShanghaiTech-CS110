@@ -47,10 +47,39 @@ double pi_omp_naive() {
 }
 
 // Task 1
-double pi_omp_opt() { return 0.0; }
+double pi_omp_opt() {
+  double step = 1.0 / NUM_STEPS;
+  double sum = 0.0;
+#pragma omp parallel
+  {
+    double sum_private = 0.0;
+#pragma omp for
+    for (int i = 0; i < NUM_STEPS; i++) {
+      double x = (i + 0.5) * step;
+      sum_private += 4.0 / (1.0 + x * x);
+    }
+#pragma omp critical
+    {
+      sum += sum_private;
+    }
+  }
+  return step * sum;
+}
 
 // Task 2
-double pi_omp_reduction() { return 0.0; }
+double pi_omp_reduction() {
+  double step = 1.0 / NUM_STEPS;
+  double sum = 0.0;
+#pragma omp parallel
+  {
+#pragma omp for reduction(+ : sum)
+    for (int i = 0; i < NUM_STEPS; i++) {
+      double x = (i + 0.5) * step;
+      sum += 4.0 / (1.0 + x * x);
+    }
+  }
+  return step * sum;
+}
 
 int main() {
   double serial_result, omp_naive_result, omp_opt_result, omp_reduction_result;
