@@ -52,9 +52,9 @@ Assume:
     \setstretch{1.25}
 
     \textbf{Virtual Address $\mathtt{0x162}$:}\\
-    For virtual address $\mathtt{0x162}$: VPN = \blank{}, Page Offset = \blank{}.\\
+    For virtual address $\mathtt{0x162}$: VPN = \blank{0x16}, Page Offset = \blank{0x2}.\\
     Using a three-level page table with two index bits per level: \\
-    The Level 1 index is \blank{}, the Level 2 index is \blank{}, and the Level 3 index is \blank{}.
+    The Level 1 index is \blank{0x1}, the Level 2 index is \blank{0x1}, and the Level 3 index is \blank{0x2}.
 
     \vspace{\medskipamount}
 
@@ -62,26 +62,26 @@ Assume:
 
     \vspace{\medskipamount}
 
-    First, in the Level 1 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the Level 2 page table base address is \blank{}.
+    First, in the Level 1 page table, the corresponding entry is $PA = \blank{0x4}$, $Cont. = \blank{0x20}$. Thus, the Level 2 page table base address is \blank{0x20}.
 
     \vspace{\smallskipamount}
 
-    Next, in the Level 2 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the Level 3 page table base address is \blank{}.
+    Next, in the Level 2 page table, the corresponding entry is $PA = \blank{0x24}$, $Cont. = \blank{0x50}$. Thus, the Level 3 page table base address is \blank{0x50}.
 
     \vspace{\smallskipamount}
 
-    Finally, in the Level 3 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the target page frame base address is \blank{}.
+    Finally, in the Level 3 page table, the corresponding entry is $PA = \blank{0x58}$, $Cont. = \blank{0x160}$. Thus, the target page frame base address is \blank{0x160}.
 
     \vspace{\medskipamount}
 
-    Combining the page frame base address with the Page Offset, the final physical address is \blank{}, resulting in a Page \blank{} (Hit/Miss).
+    Combining the page frame base address with the Page Offset, the final physical address is \blank{0x162}, resulting in a Page \blank{Hit} (Hit/Miss).
 
     \vspace{\bigskipamount}
 
     \textbf{Virtual Address $\mathtt{0x324}$:}\\
-    For virtual address $\mathtt{0x324}$: VPN = \blank{}, Page Offset = \blank{}.\\
+    For virtual address $\mathtt{0x324}$: VPN = \blank{0x32}, Page Offset = \blank{0x4}.\\
     Using a three-level page table with two index bits per level: \\
-    The Level 1 index is \blank{}, the Level 2 index is \blank{}, and the Level 3 index is \blank{}.
+    The Level 1 index is \blank{0x3}, the Level 2 index is \blank{0x0}, and the Level 3 index is \blank{0x2}.
 
     \vspace{\medskipamount}
 
@@ -89,21 +89,25 @@ Assume:
 
     \vspace{\medskipamount}
 
-    First, in the Level 1 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the Level 2 page table base address is \blank{}.
+    First, in the Level 1 page table, the corresponding entry is $PA = \blank{0xC}$, $Cont. = \blank{0x30}$. Thus, the Level 2 page table base address is \blank{0x30}.
 
     \vspace{\smallskipamount}
 
-    Next, in the Level 2 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the Level 3 page table base address is \blank{}.
+    Next, in the Level 2 page table, the corresponding entry is $PA = \blank{0x30}$, $Cont. = \blank{0x90}$. Thus, the Level 3 page table base address is \blank{0x90}.
 
      \vspace{\smallskipamount}
 
-    Finally, in the Level 3 page table, the corresponding entry is $PA = \blank{}$, $Cont. = \blank{}$. Thus, the target page frame base address is \blank{}.
+    Finally, in the Level 3 page table, the corresponding entry is $PA = \blank{0x92}$, $Cont. = \blank{0x120}$. Thus, the target page frame base address is \blank{0x120}.
 
     \vspace{\medskipamount}
 
-    Combining the page frame base address with the Page Offset, the final physical address is \blank{}, resulting in a Page \blank{} (Hit/Miss).
+    Combining the page frame base address with the Page Offset, the final physical address is \blank{0x124}, resulting in a Page \blank{Miss} (Hit/Miss).
     
     \vspace{1cm}
     \part[4] Calculating the size of the increase in the physical memory occupied by process A during the given sequence of virtual address accesses (counting only process-exclusive physical pages, excluding shared pages, kernel structures, and other unrelated components). [4 points]
+
+    \begin{solution}
+        One page for level 2 page table (PPN 0x3), one page for level 3 page table (PPN 0x9), and one page for the data (PPN 0x12). The total size of the increase in physical memory is \( 3 \times 16 \text{ B} = 48 \text{ B} \).
+    \end{solution}
 
  \end{parts}

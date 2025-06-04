@@ -5,16 +5,16 @@ The system uses a 32-bit virtual address space with byte-addressable memory and 
     \part[8] Answer the following questions. Specify bit ranges as [high:low] with zero-based indexing (bit 0 = LSB). [8 points]
     \vspace{0.5cm} 
     
-    The range of bits for the VPN (virtual page number) \blank[3cm]{}.
+    The range of bits for the VPN (virtual page number) \blank[3cm]{[31:12]}.
     \vspace{0.5cm} 
     
-    The range of bits for the offset within a page \blank[3cm]{}.
+    The range of bits for the offset within a page \blank[3cm]{[11:0]}.
     \vspace{0.5cm} 
     
-    The range of bits for the TLB tag \blank[3cm]{}.
+    The range of bits for the TLB tag \blank[3cm]{[31:14]}.
     \vspace{0.5cm} 
     
-    The range of bits for the TLB set number \blank[3cm]{}.
+    The range of bits for the TLB set number \blank[3cm]{[13:12]}.
     \vspace{0.5cm} 
     
     \part [4] Assume the TLB is initially empty, and the accessed VPNs are $\mathtt{4, 17, 20, 8, 21, 5, 17, 25, 29}$ in sequence.  Complete Final TLB State (Table ~\ref{tab:tlb_state_1}). [4 points]
@@ -28,8 +28,8 @@ The system uses a 32-bit virtual address space with byte-addressable memory and 
         \hline % 
         \multicolumn{1}{|c|}{\textbf{Index}} & \multicolumn{1}{c|}{\textbf{VPN}} \\ 
         \hline
-        0 & \\ \hline
-        1 & \\ \hline
+        0 & 8, 20, 4 \\ \hline
+        1 & 29, 25, 17, 5 \\ \hline
         2 & \\ \hline
         3 & \\ \hline
         \end{tabular}
@@ -59,17 +59,17 @@ The system uses a 32-bit virtual address space with byte-addressable memory and 
             \hline
             \textbf{VPN} & \textbf{Marks} & \textbf{VPN} & \textbf{Marks} &\textbf{VPN} & \textbf{Marks}  \\
             \hline
-                4 &  & 17 &   & 5 &    \\
+                4 & $\times$ & 17 & $\times$  & 5 &  $\bigcirc$  \\
                 \hline
-                17 &  & 25 &  & 4 &   \\
+                17 &  & 25 & $\times$ & 4 & $\bigcirc$ \\
                 \hline
-                20 &  & 29 &  & 8 &   \\
+                20 & $\times$ & 29 & $\bigcirc$ & 8 & $\checkmark$ \\
                 \hline
-                8 &  & 12 &  & 17 &   \\
+                8 &  & 12 &  & 17 & $\bigcirc$ \\
                 \hline
-                21 &  & 24 &  & 12 &   \\
+                21 & $\times$ & 24 & $\bigcirc$ & 12 & $\checkmark$  \\
                 \hline
-                5 &  & 21 &  & 29 &   \\
+                5 & $\times$ & 21 & $\bigcirc$ & 29 & $\checkmark$ \\
             \hline
         \end{tabular}
     \end{minipage}
@@ -84,8 +84,8 @@ The system uses a 32-bit virtual address space with byte-addressable memory and 
         \hline % 
         \multicolumn{1}{|c|}{\textbf{Index}} & \multicolumn{1}{c|}{\textbf{VPN}} \\ 
         \hline
-        0 & \\ \hline
-        1 & \\ \hline
+        0 & 24, 4, 8, 12 \\ \hline
+        1 & 5, 29, 21, 17 \\ \hline
         2 & \\ \hline
         3 & \\ \hline
         \end{tabular}
