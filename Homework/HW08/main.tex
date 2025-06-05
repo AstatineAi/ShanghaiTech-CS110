@@ -10,6 +10,7 @@
 \usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage{float}
+\usepackage{ctex}
 
 \usepackage{setspace}
 
@@ -95,7 +96,7 @@
 \pagestyle{headandfoot}
 \runningheadrule
 \firstpageheader{Computer Architecture I}{}{2025}
-\runningheader{Email:}
+\runningheader{Email: aihy2023}
 {Homework 8, Page \thepage\ of \numpages}
 {Computer Architecture I 2025}
 \firstpagefooter{}{}{}
@@ -116,10 +117,10 @@
 {\centering \Large Homework 8\\\vspace{.75cm}}
 
 \vspace{0.1cm}
-\makebox[\textwidth]{Chinese Name:\enspace\hrulefill}\\[0.6cm]
-\makebox[\textwidth]{Pinyin Name:\enspace\hrulefill}\\[0.6cm]
-\makebox[\textwidth]{Student ID:\enspace\hrulefill}\\[0.6cm]
-\makebox[\textwidth]{E-Mail (omit ``@shanghaitech.edu.cn''):\enspace\hrulefill}\\[0.5cm]
+\makebox[\textwidth]{Chinese Name: 艾恒宇\hfill}\\[0.6cm]
+\makebox[\textwidth]{Pinyin Name: Hengyu Ai\hfill}\\[0.6cm]
+\makebox[\textwidth]{Student ID: 2023533088\hfill}\\[0.6cm]
+\makebox[\textwidth]{E-Mail prefix: aihy2023 \hfill}\\[0.5cm]
 
 \end{center}
 
@@ -129,25 +130,25 @@
 \question[20] \textbf{Put T (True) or F (False) for each of following statement. [2 points each]}
 
 \begin{enumerate}[(1)]
-    \item ( \quad ) On-chip cache has bigger capacity compared with the main memory because they are physically closer to the CPU.
+    \item ( F ) On-chip cache has bigger capacity compared with the main memory because they are physically closer to the CPU.
 
-    \item ( \quad ) In a Moore FSM,the output depends only on the current state; in a Mealy FSM, the output depends on both the current state and the inputs.
+    \item ( T ) In a Moore FSM,the output depends only on the current state; in a Mealy FSM, the output depends on both the current state and the inputs.
     
-    \item ( \quad ) Assign the base address of array X to register t0. The instruction lw a0,4(t0) will always load X[1] into a0.
+    \item ( F ) Assign the base address of array X to register t0. The instruction lw a0,4(t0) will always load X[1] into a0.
 
-    \item ( \quad ) Register a0-a7 can not be changed during execution of a function.
+    \item ( F ) Register a0-a7 can not be changed during execution of a function.
 
-    \item ( \quad ) Pseudo instructions could be output by the compiler.
+    \item ( T ) Pseudo instructions could be output by the compiler.
 
-    \item ( \quad ) The linker finalizes destination addresses for all jump instruction.
+    \item ( T ) The linker finalizes destination addresses for all jump instruction.
 
-    \item ( \quad ) Spatial locality refers to the phenomenon where accessing a specific memory location makes accessing proximate storage positions more likely in the near future.
+    \item ( T ) Spatial locality refers to the phenomenon where accessing a specific memory location makes accessing proximate storage positions more likely in the near future.
 
-    \item ( \quad ) Assume that a processor has a two-level cache hierarchy. If L1 cache follows the write-through policy while the L2 cache follows the write-back policy, a write hit at L1 cache would always cause a write at L2 cache. 
+    \item ( T ) Assume that a processor has a two-level cache hierarchy. If L1 cache follows the write-through policy while the L2 cache follows the write-back policy, a write hit at L1 cache would always cause a write at L2 cache. 
 
-    \item ( \quad ) Instruction-level parallelism (ILP) techniques include Very Long Instruction Word (VLIW) and Single Instruction, Multiple Data (SIMD).
+    \item ( F ) Instruction-level parallelism (ILP) techniques include Very Long Instruction Word (VLIW) and Single Instruction, Multiple Data (SIMD).
 
-    \item ( \quad ) A page fault occurs if a page table entry can not be found in the TLB.
+    \item ( F ) A page fault occurs if a page table entry can not be found in the TLB.
     
 \end{enumerate}
 
@@ -166,30 +167,34 @@
         \end{minipage}        
         \hfill
         \begin{minipage}[t]{0.35\textwidth}
-        \includegraphics[width=\linewidth]{number.pdf}
+        \includegraphics[width=\linewidth]{number_sign_magnitude.pdf}
         \caption*{Sign Magnitude}
         \end{minipage}  
         \hfill
         \begin{minipage}[t]{0.35\textwidth}
-        \includegraphics[width=\linewidth]{number.pdf}
+        \includegraphics[width=\linewidth]{number_ones_complement.pdf}
         \caption*{One's complement}
         \end{minipage}
         \hfill
         \begin{minipage}[t]{0.35\textwidth}
-        \includegraphics[width=\linewidth]{number.pdf}
+        \includegraphics[width=\linewidth]{number_twos_complement.pdf}
         \caption*{Two's complement}
         \end{minipage}  
     \end{figure}
     
     \part[3] What is the smallest number greater than 2 that can be represented by the IEEE 754 single-precision floating-point format?
-\\
-\\
-\\
+    \begin{solution}
+        \[
+        2 \times (1 + 2^{-23}) = 2.0000002384185791015625
+        \]
+    \end{solution}
+
     \part[3] What is the smallest number greater than 4 that can be represented by the IEEE 754 single-precision floating-point format?
-\\
-\\
-\\
-    
+    \begin{solution}
+        \[
+        4 \times (1 + 2^{-23}) = 4.000000476837158203125
+        \]
+    \end{solution}
 \end{parts}
 
 
@@ -199,7 +204,7 @@
 \question \textbf{Logic [8 points]}\\
 \begin{parts}
     \part[4] \textbf{(Multiple Choice)} Which of the following statement(s) is(are) true about boolean algebra?
-    \underline{\quad\quad\quad\quad\quad\quad}
+    \underline{A B C D}
     \begin{enumerate}[A.]
     \item $XYZ+XY+X=X$.
     \item $(X+\overline{Y})X=X+X\overline{Y}$.
@@ -209,7 +214,7 @@
 
     
     \part[4] \textbf{(Multiple Choice)} Which of the following statement(s) is(are) true about boolean algebra? 
-    \underline{\quad\quad\quad\quad\quad\quad}
+    \underline{A B C}
     \begin{enumerate}[A.]
     \item $X+\overline{X}Y=X+Y$.
     \item $X\overline{Y}Z+\overline{X}+Y+\overline{Z}=1$.
@@ -235,17 +240,17 @@
     \hline
     state bit 1 & state bit 0 & input & next state bit 1 & next state bit 0 & ouput \\
     \hline
-    0 & 0 & 0 &  &  &  \\
+    0 & 0 & 0 & 0 & 0 & 0 \\
     \hline
-    0 & 0 & 1 &  &  &  \\
+    0 & 0 & 1 & 0 & 1 & 0 \\
     \hline
-    0 & 1 & 0 &  &  &  \\
+    0 & 1 & 0 & 0 & 0 & 0 \\
     \hline
-    0 & 1 & 1 &  &  &  \\
+    0 & 1 & 1 & 1 & 0 & 1 \\
     \hline
-    1 & 0 & 0 &  &  &  \\
+    1 & 0 & 0 & 0 & 0 & 0 \\
     \hline
-    1 & 0 & 1 &  &  &  \\
+    1 & 0 & 1 & 1 & 0 & 1 \\
     \hline
     \end{tabular}
     \label{tab:my_label}
@@ -254,7 +259,7 @@
 \part[3] Using St1(state bit 1), St0(state bit 0) and Ip(Input) as the input and Output as the output, extract a boolean expression from the truth table
 \newline
 
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}
+\underline{\( \overline{St0} St1 Ip + St0 \overline{St1} Ip \)}
 
 \end{parts}
 \pagebreak
@@ -285,27 +290,18 @@ Complete the following RISC-V code to implement the function, assuming machine i
   li x14, 0x0              // int i = 0
   j end
 loop:
-\end{lstlisting}}
-
-
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-
-{\bf\begin{lstlisting}[numbers=none]
+  slli x5, x14, 2
+  add x5, x5, x12
+  lw x5, 0(x5)
+  lb x6, 0(x5)
+  lbu x7, 1(x5)
+  lh x28, 2(x5)
+  mul x29, x6, x7
+  add x29, x29, x28
+  sw x29, 4(x5)
   addi x14, x14, 1
 end:
   blt x14, x13, loop
-  ...
 \end{lstlisting}}
 
 \pagebreak
@@ -313,8 +309,6 @@ end:
 \part[6] Suppose we have the following memory space before running the above program. If the machine is {\bf little-endian}, what does the memory space look like after running the program? If the machine is {\bf big-endian}, what does the memory space look like after running the program? 
 
 Please fill in the results in the corresponding table locations.
-
-
 
 \begin{table}[h]
 \vspace{1em}
@@ -328,9 +322,9 @@ Please fill in the results in the corresponding table locations.
                                       & 0x0000CC08 \\ \cline{2-2}
                                       & 0x0000CC00 \\ \cline{2-2}
 \raisebox{2ex}[0pt][0pt]{0x00FF0000}  &{\bf... ...}\\ \cline{2-2}
-                                      &            \\ \cline{2-2}
+                                      & 0xFFFFC25A \\ \cline{2-2}
                                       & 0xA608FA1D \\ \cline{2-2}
-                                      &            \\ \cline{2-2}
+                                      & 0xFFFF792E \\ \cline{2-2}
                                       & 0x94AE4092 \\ \cline{2-2}
 \raisebox{2ex}[0pt][0pt]{0x0000CC00}  &{\bf... ...}\\ \cline{2-2}
                                       &            \\ \cline{2-2}
@@ -349,9 +343,9 @@ Please fill in the results in the corresponding table locations.
                                       & 0x0000CC08 \\ \cline{2-2}
                                       & 0x0000CC00 \\ \cline{2-2}
 \raisebox{2ex}[0pt][0pt]{0x00FF0000}  &{\bf... ...}\\ \cline{2-2}
-                                      &            \\ \cline{2-2}
+                                      & 0xFFFFF74D \\ \cline{2-2}
                                       & 0xA608FA1D \\ \cline{2-2}
-                                      &            \\ \cline{2-2}
+                                      & 0xFFFFF72A \\ \cline{2-2}
                                       & 0x94AE4092 \\ \cline{2-2}
 \raisebox{2ex}[0pt][0pt]{0x0000CC00}  &{\bf... ...}\\ \cline{2-2}
                                       &            \\ \cline{2-2}
@@ -370,17 +364,17 @@ All below cahce use LRU policy.
 Suppose we now have a data cache with a size of 256 Bytes and a cache block of 8 Bytes that is direct mapped. what is the hit rate of the data cache?
 
 
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}
+\underline{ \( \dfrac{20}{30} \approx 66.7\% \) }
 
 Suppose we now have a data cache with a size of 256 Bytes and a cache block of 8 Bytes that is 2-ways associative. what is the hit rate of the data cache?
 
 
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}
+\underline{ \( \dfrac{22}{30} \approx 73.3\% \) }
 
 
 Suppose we now have a data cache with a size of 256 Bytes and a cache block of 16 Bytes that is 4-ways associative. what is the hit rate of the data cache?
 
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}
+\underline{ \( \dfrac{27}{30} = 90\% \) }
 
 
 
@@ -415,22 +409,32 @@ Suppose that we have the following delay and setup times.
 
 \begin{parts}
     \part[4] What is the highest clock frequency for this processor? Show calculation details.
-\\
-\\
-\\
-\\
-\\
-\\
+
+    \begin{solution}
+        \begin{align*}
+        \min period &= \max t_{comb} + t_{clk-to-q} + t_{setup}\\
+        & = t_{Memory read} + t_{clk-to-q} + t_{setup}\\
+        & = 200ps + 25ps + 25ps = 250ps
+        \end{align*}
+
+        \[
+        f = \frac{1}{t_{clk}} = \frac{1}{250ps} = 4GHz
+        \]
+    \end{solution}
 
 \pagebreak
     
     \part[4] 
     If this 5 stage pipelined Risc-V processor is changed to a single-cycle datapath, what is the lowest possible $t_{clk}$? Show calculation details.
-\\
-\\
-\\
-\\
-\\
+
+    \begin{solution}
+        \begin{align*}
+        \min period &= \max t_{comb} + t_{clk-to-q} + t_{setup}\\
+        & = t_{RegFile read} + t_{Mux} + t_{ALU} + t_{Memory read} + t_{Mux} + t_{clk-to-q} + t_{RegFile setup}\\
+        & = 100ps + 25ps + 150ps + 200ps + 25ps + 25ps + 25ps + 20ps\\
+        & = 570ps
+        \end{align*}
+    \end{solution}
 
     \part[4] Forwarding datapaths are added to this five-stage pipelined RISC-V processor (the red line in Figure). 
     The given code is excuted on this processor.
@@ -448,24 +452,28 @@ I8:    add  a5, a2, a4
 
 Plese identify which instruction(s) activate the forwarding data path to reduce stall(s)? (Use $I1\rightarrow I3$, etc. to represent the instruction I1 are forward to I3.)
 \newline
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-\underline{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
+\underline{ \( I1 \to I3 \) }\\
+\underline{ \( I3 \to I5 \) }\\
+\underline{ \( I5 \to I6 \) }\\
+\underline{ \( I7 \to I8 \) }\\
+
 \part[3] With the forwarding datapaths, there is still one unavoidable stall left to correctly execute the code above. Please locate the instructions and registers that cause the stall (Use the blanks below, use I1, I2, etc. to represent the instructions).
 \newline
 
-The register \underline{\quad\quad\quad\quad} in instruction \underline{\quad\quad\quad\quad} and \underline{\quad\quad\quad\quad} causes the unavoidable stall.
+The register \underline{a7} in instruction \underline{ I6 } and \underline{ I7 } causes the unavoidable stall.
 
 
 \part[4] Suppose we have a program with 4000 lines instructions running on this processor. What is the running time of the program ? Suppose we use the processor frequency in (a). And we assume that the CPI is the same as the CPI of the program in (c). Show calculation details.
 
 (Hint $\frac{time}{program}=\frac{instructions}{program}\times\frac{cycles}{instruction}\times\frac{time}{cycle}$)
-\\
-\\
-\\
+
+\begin{solution}
+    \begin{align*}
+    time &= instructions \times \frac{cycles}{instruction} \times \frac{time}{cycle}\\
+    & = 4000 \times \frac{8 + 4 + 1}{8} \times 250ps\\
+    & = 1.625 \mu s\\
+    \end{align*}
+\end{solution}
 
 \end{parts}
 
@@ -475,25 +483,52 @@ The register \underline{\quad\quad\quad\quad} in instruction \underline{\quad\qu
 
 \begin{parts}
 \part[4] We have a two-level cache where L1 has a hit rate of $80\%$ and a hit latency of 2 cycles, and L2 has a hit latency of $15$ cycles. Assume $100$ total accesses to this two-level cache will cause {\bf five} L2 misses on average, what is the L2 local miss rate?  Assume access to main memory takes 100 cycles, what is the Average Memory Access Time (AMAT) of this system?
-\\
-\\
-\\
-\\
-\\
+
+\begin{solution}
+
+    \[
+        \text{L2 local miss rate} = \frac{5}{100 \times (1 - 80\%)} = 25 \%
+    \]
+
+    \begin{align*}
+        \text{AMAT} = & \text{L1 hit latency} + \text{L1 miss rate} \times\\
+        & (\text{L2 hit latency} + \text{L2 miss rate} \times \text{memory latency})\\
+        = & 2 + 0.2 \times (15 + 0.25 \times 100)\\
+        = & 10
+    \end{align*}
+
+\end{solution}
 
 \part[4] Now we add a L3 cache to the above two-levels cache. If the hit latency of L3 cache is 30 cycles, what is the maximal local miss rate of L3 cache if we want to reduce the AMAT of the system to $8$ cycles?
-\\
-\\
-\\
-\\
-\\
+
+\begin{solution}
+
+    \begin{align*}
+        \text{AMAT} = & \text{L1 hit latency} + \text{L1 miss rate} \times\\
+        & (\text{L2 hit latency} + \text{L2 miss rate} \times\\
+        & (\text{L3 hit latency} + \text{L3 miss rate} \times \text{memory latency}))\\
+        = & 2 + 0.2 \times (15 + 0.25 \times (30 + \text{L3 miss rate} \times 100))\\
+        = & 5 x + 6.5 \le 8
+    \end{align*}
+
+    \[
+        \text{L3 miss rate} \le \frac{1.5}{5} = 0.3
+    \]
+
+\end{solution}
 
 \part[4] Assume that you are given a program, of which a fraction $f$ (measured in percentage) can be optimized for parallel computing by employing N machines built as a cluster. Consider that $f=80\%$
 . If you want to accelerate the program's performance to about 3 times, what is the minimal number of N you need to employ?
-\\
-\\
-\\
 
+\begin{solution}
+    \[
+        \text{Speedup} = \frac{1}{(1-f) + \frac{f}{N}} = 3
+    \]
+
+    \[
+        N = \frac{f}{f - \frac{2}{3}} = 6
+    \]
+\end{solution}
 
 \end{parts}
 
